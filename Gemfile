@@ -1,5 +1,8 @@
 source :rubygems
 
 gem "guard-coffeescript"
-gem "growl_notify"
-gem "rb-fsevent"
+gem "ruby_gntp"
+
+group :win do
+  gem "win32console"
+end
