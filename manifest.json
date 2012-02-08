@@ -1,0 +1,14 @@
+{
+  "name": "FileSafr",
+  "description": "Safely store your files on the cloud",
+  "version": "1.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  }
+  // "icons": {
+  //   "48": "icon48.png",
+  //   "128": "icon128.png"
+  // }
+}
