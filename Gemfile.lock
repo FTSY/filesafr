@@ -14,6 +14,7 @@ GEM
     guard-coffeescript (0.5.4)
       coffee-script (>= 2.2.0)
       guard (>= 0.8.3)
+    guard-js-static-require (0.0.1)
     multi_json (1.0.4)
     ruby_gntp (0.3.4)
     thor (0.14.6)
@@ -23,4 +24,5 @@ PLATFORMS
 
 DEPENDENCIES
   guard-coffeescript
+  guard-js-static-require
   ruby_gntp
