@@ -1,6 +1,6 @@
 window.FileSafr.UI.ProgressBar = Ember.View.extend
   tagName: "div"
-  templateName: "progress-bar"
+  template: Ember.Handlebars.compile('<div class="internal"></div>')
   classNames: ["progress-bar"]
   internalValue: 0
 
