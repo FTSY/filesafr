@@ -3,6 +3,7 @@ window.FileSafr.UI.ProgressBar = Ember.View.extend
   template: Ember.Handlebars.compile('<div class="internal"></div>')
   classNames: ["progress-bar"]
   internalValue: 0
+  animated: true
 
   value: ((key, value) ->
     if arguments.length == 1
@@ -14,7 +15,13 @@ window.FileSafr.UI.ProgressBar = Ember.View.extend
   ).property("internalValue")
 
   updateProgress: (->
-    @$(".internal").css("width", @get("value") * 100 + "%")
+    move = width: @get("value") * 100 + "%"
+    element = @$(".internal")
+
+    if @get("animated")
+      element.animate(move, 400)
+    else
+      element.css(move)
   ).observes("value")
 
   normalizeValue: (value) ->
