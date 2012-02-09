@@ -1,1 +1,2 @@
-console.log "hello world"
+app = window.FileSafr.Application = Ember.Application.create()
+app.set("progressValue", 0)

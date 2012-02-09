@@ -5,10 +5,18 @@
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="vendor/jquery.js"></script>
     <script type="text/javascript" src="vendor/ember.js"></script>
+    <script type="text/javascript" src="javascripts/filesafr.js"></script>
+    <script type="text/javascript" src="javascripts/ui/progress_bar.js"></script>
     <script type="text/javascript" src="javascripts/application.js"></script>
   </head>
   <body>
-    <h1>FileSafr</h1>
-    <a href="test/index.html">test</a>
+    <script type="text/x-handlebars" data-template-name="progress-bar">
+      <div class="internal"></div>
+    </script>
+    <script type="text/x-handlebars">
+      {{view FileSafr.UI.ProgressBar valueBinding="FileSafr.Application.progressValue"}}
+      <h1>FileSafr</h1>
+      <a href="test/index.html">test</a>
+    </script>
   </body>
 </html>
