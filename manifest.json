@@ -13,6 +13,7 @@
     "128": "images/icon128.png"
   },
   "permissions": [
+    "https://anonfiles.com/*",
     "unlimitedStorage"
   ]
 }
