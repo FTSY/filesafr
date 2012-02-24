@@ -1,8 +1,10 @@
-FileSafr.Uploader = Ember.Object.extend
-  init: (options = {}) ->
+FileSafr.Uploader = class Uploader
+  mix @::, FileSafr.Observable
+
+  constructor: (options = {}) ->
     # listen to all events (options that starts with "on")
     for opt, fn of options
-      Ember.addListener(this, opt, fn) if opt.match(/^on/)
+      @addListener(match[1], fn) if match = opt.match(/^on(.+)/)
 
   upload: (targetUrl, formData) ->
     xhr = new XMLHttpRequest()

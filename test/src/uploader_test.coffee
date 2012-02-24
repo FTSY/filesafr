@@ -8,8 +8,6 @@ test "initialization add event listeners", ->
     onprogress: -> null
     other: -> null
 
-  events = Ember.metaPath(uploader, ["listeners"], true)
-
-  ok events.oncomplete
-  ok events.onprogress
-  ok !events.other
+  equal uploader.listenersForEvent("complete").length, 1
+  equal uploader.listenersForEvent("progress").length, 1
+  equal uploader.listenersForEvent("other").length, 0
