@@ -1,4 +1,4 @@
-FileSafr.Observable =
+define
   addListener: (event, listener) ->
     @_ensureListenerScope(event)
     @_eventListeners[event].push(listener)

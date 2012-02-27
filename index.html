@@ -3,17 +3,14 @@
   <head>
     <title>FileSafr</title>
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="vendor/jquery.js"></script>
-    <script type="text/javascript" src="vendor/ember.js"></script>
-    <script type="text/javascript" src="javascripts/filesafr.js"></script>
-    <script type="text/javascript" src="javascripts/ui/progress_bar.js"></script>
-    <script type="text/javascript" src="javascripts/application.js"></script>
+    <script src="vendor/vendorjs.js"></script>
+    <script src="vendor/require-jquery.js" data-main="src/main"></script>
   </head>
   <body>
     <script type="text/x-handlebars">
-      {{view FileSafr.UI.ProgressBar valueBinding="FileSafr.Application.progressValue"}}
+      {{view FileSafr.ProgressBar valueBinding="FileSafr.Application.progressValue"}}
       <h1>FileSafr</h1>
     </script>
-      <a href="test/index.html">test</a>
+    <a href="test/index.html">test</a>
   </body>
 </html>

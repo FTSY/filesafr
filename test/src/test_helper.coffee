@@ -1,3 +1,3 @@
 window.testReURL = /^[a-z]+:\/\/.+$/
-window.getFixtureFile = ->
-  null
+window.getFixtureFile = (callback) ->
+  callback(null)
