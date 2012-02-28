@@ -7,7 +7,7 @@ define ["jquery", "cs!filesafr/uploader", "cs!filesafr/core", "cs!filesafr/basic
     parseInfo: ->
       info = $.parseJSON(@response.responseText)
 
-      @fileinfo = new Bayfile(info)
+      @fileinfo = new Bayfile(info) if @isStatusOk()
 
   class Bayfiles
     upload: (file, options = {}) ->

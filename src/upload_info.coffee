@@ -3,7 +3,10 @@ define ->
     constructor: (@response) ->
       @parseInfo()
 
+    isStatusOk: ->
+      @response.status >= 200 and @response.status < 300
+
     isUploaded: ->
-      @response.status >= 200 and @response.status < 300 and @file()
+      @isStatusOk() and @file()
 
     file: -> @fileinfo
