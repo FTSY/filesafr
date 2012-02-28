@@ -7,6 +7,7 @@ define ->
 
     unless canvas
       canvas = document.createElement("canvas")
+      canvas.id = "_imageGeneratorCanvas"
       canvas.width = CANVAS_WIDTH
       canvas.height = CANVAS_HEIGHT
       canvas.style.display = "none"
