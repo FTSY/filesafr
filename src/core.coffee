@@ -1,4 +1,4 @@
-define
+define ["base64_binary"], (base) ->
   mix: (prot, mixes...) ->
     for mixin in mixes
       for key, value of mixin
@@ -11,3 +11,6 @@ define
       value
     else
       null
+
+  byteArrayFromDataURL: (data) ->
+    base.decode(data.replace(/^data:image\/(png|jpg);base64,/, ""))
