@@ -2,3 +2,7 @@ window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileS
 
 define
   testReURL: /^[a-z]+:\/\/.+$/
+  sampleBlob: ->
+    builder = new WebKitBlobBuilder()
+    builder.append "Some text content"
+    builder.getBlob("text/plain")
