@@ -13,4 +13,4 @@ define ["base64_binary"], (base) ->
       null
 
   byteArrayFromDataURL: (data) ->
-    base.decode(data.replace(/^data:image\/(png|jpg);base64,/, ""))
+    base.decode(data.replace(/^data:.+?;base64,/, ""))
