@@ -2,16 +2,33 @@
 <html>
   <head>
     <title>FileSafr</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="stylesheets/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="stylesheets/application.css" />
     <script src="vendor/vendorjs.js"></script>
     <script src="vendor/require-jquery.js" data-main="src/main"></script>
+    <script src="vendor/bootstrap.js"></script>
   </head>
   <body>
-    <script type="text/x-handlebars">
-      {{view FileSafr.ProgressBar valueBinding="FileSafr.Application.progressValue"}}
-      <h1>FileSafr</h1>
-    </script>
-    <a href="test/index.html">test</a>
-    <progress max="1">Uploading</progress>
+    <div class="container">
+      <script type="text/x-handlebars">
+        <h1>FileSafr</h1>
+        <!--{{view FileSafr.ProgressBar valueBinding="FileSafr.Application.progressValue"}}-->
+      </script>
+      <h2>Downloads in progress</h2>
+      <table class="table">
+        <tr>
+          <td>Some file</td>
+          <td><progress max="1" value="0.6"></progress></td>
+          <td>
+            <a class="btn btn-small"><i class="icon-pause"></i></a>
+            <a class="btn btn-small"><i class="icon-remove-sign"></i></a>
+          </td>
+        </tr>
+      </table>
+      <div class="well">
+        <a href="test/index.html" class="btn btn-info">Go to test suite</a>
+      </div>
+    </div>
   </body>
 </html>
