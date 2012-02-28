@@ -1,3 +1,7 @@
 body {
   padding: 20px 0 40px;
 }
+
+.table td {
+  vertical-align: middle;
+}
