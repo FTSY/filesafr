@@ -5,6 +5,7 @@ require.config({
 QUnit.config.autostart = false;
 
 require([
+  "cs!core_test",
   "cs!observable_test",
   "cs!uploader_test",
   "cs!servers/anonfiles_test"
