@@ -16,13 +16,16 @@ define ->
 
     canvas
 
+  walkArrayX = [0...CANVAS_WIDTH]
+  walkArrayY = [0...CANVAS_HEIGHT]
+
   ->
     canvas = getGeneratorCanvas()
     ctx = canvas.getContext("2d")
     ctx.clearRect(CANVAS_WIDTH, CANVAS_HEIGHT)
 
-    for x in [0...10]
-      for y in [0...10]
+    for x in walkArrayX
+      for y in walkArrayY
         ctx.fillRect(x, y, 1, 1) if Math.random() >= 0.5
 
     canvas.toDataURL("image/png")
