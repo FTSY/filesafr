@@ -1,18 +1,8 @@
-define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, h) ->
-  class Anonfile
+define ["cs!filesafr/uploader", "cs!filesafr/core", "cs!filesafr/basic_file", "cs!filesafr/upload_info"], (Uploader, h, BasicFile, UploadInfo) ->
+  class Anonfile extends BasicFile
     constructor: (@path) ->
 
-    downloadPath: -> @path
-
-  class UploadInfo
-    constructor: (@response) ->
-      @parseInfo()
-
-    isUploaded: ->
-      @response.status >= 200 and @response.status < 300 and @file()
-
-    file: -> @fileinfo
-
+  class AnonUpload extends UploadInfo
     parseInfo: ->
       url = @response.responseText.match(/http:\/\/cdn\.anonfiles\.com\/[^"]+/)[0]
 
@@ -27,5 +17,5 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, h) ->
       fd.append("upl", "Upload")
 
       uploader = new Uploader(options)
-      uploader.upload("https://anonfiles.com/en/upload", fd, UploadInfo)
+      uploader.upload("https://anonfiles.com/en/upload", fd, AnonUpload)
       uploader

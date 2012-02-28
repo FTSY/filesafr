@@ -1,25 +1,15 @@
-define ["jquery", "cs!filesafr/uploader", "cs!filesafr/core"], ($, Uploader, h) ->
-  class Bayfile
+define ["jquery", "cs!filesafr/uploader", "cs!filesafr/core", "cs!filesafr/basic_file", "cs!filesafr/upload_info"], ($, Uploader, h, BasicFile, UploadInfo) ->
+  class Bayfile extends BasicFile
     constructor: (@info) ->
       @path = info.downloadUrl
 
-    downloadPath: -> @path
-
-  class UploadInfo
-    constructor: (@response) ->
-      @parseInfo()
-
-    isUploaded: ->
-      @response.status >= 200 and @response.status < 300 and @file()
-
-    file: -> @fileinfo
-
+  class BayUpload extends UploadInfo
     parseInfo: ->
       info = $.parseJSON(@response.responseText)
 
       @fileinfo = new Bayfile(info)
 
-  class Anonfiles
+  class Bayfiles
     upload: (file, options = {}) ->
       filename = h.extractOption(options, "filename") || file.name || null
 
@@ -28,5 +18,5 @@ define ["jquery", "cs!filesafr/uploader", "cs!filesafr/core"], ($, Uploader, h) 
         fd.append("file", file, filename)
 
         uploader = new Uploader(options)
-        uploader.upload(json.uploadUrl, fd, UploadInfo)
+        uploader.upload(json.uploadUrl, fd, BayUpload)
         uploader
