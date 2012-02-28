@@ -17,14 +17,27 @@
       </script>
       <h2>Downloads in progress</h2>
       <table class="table">
-        <tr>
-          <td>Some file</td>
-          <td><progress max="1" value="0.6"></progress></td>
-          <td>
-            <a class="btn btn-small"><i class="icon-pause"></i></a>
-            <a class="btn btn-small"><i class="icon-remove-sign"></i></a>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>KB/s</th>
+            <th>Size</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>my_video.avi</td>
+            <td><progress max="1" value="0.6"></progress></td>
+            <td>120.4</td>
+            <td>450 MB</td>
+            <td>
+              <a class="btn btn-small"><i class="icon-pause"></i></a>
+              <a class="btn btn-small"><i class="icon-remove-sign"></i></a>
+            </td>
+          </tr>
+        </tbody>
       </table>
       <div class="well">
         <a href="test/index.html" class="btn btn-info">Go to test suite</a>
