@@ -7,9 +7,16 @@ define ["cs!filesafr/servers/anonfiles", "cs!test_helper"], (Anonfiles, h) ->
     file = h.sampleBlob()
     host = new Anonfiles()
 
-    host.upload(file, filename: "example.txt", oncomplete: (uploadInfo) ->
-      ok uploadInfo.isUploaded(), "file was uploaded: #{uploadInfo.error}"
-      ok uploadInfo.file().downloadPath().match(h.testReURL), "valid file download URL: #{uploadInfo.file().downloadPath()}"
+    host.upload(file, filename: "example.txt", oncomplete: (e, upload) ->
+      ok upload, "make success request"
 
-      QUnit.start()
+      if upload
+        upload.download (content) ->
+          h.compareFiles content, file, (result) ->
+            ok result, "files are equals"
+
+            QUnit.start()
+
+      else
+        QUnit.start()
     )

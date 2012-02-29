@@ -1,3 +1,6 @@
 define ->
   class BasicFile
-    downloadPath: -> @path
+    constructor: (@url) ->
+
+    download: ->
+      # TODO: fetch file blob

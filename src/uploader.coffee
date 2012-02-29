@@ -2,17 +2,16 @@ define ["cs!filesafr/core", "cs!filesafr/observable"], (h, Observable) ->
   class Uploader
     h.mix @::, Observable
 
-    constructor: (options = {}) ->
-      # listen to all events (options that starts with "on")
-      for opt, fn of options
-        @addListener(match[1], fn) if match = opt.match(/^on(.+)/)
+    constructor: (@url, @data) ->
 
-    upload: (targetUrl, formData, InfoClass) ->
+    send: ->
       xhr = new XMLHttpRequest()
-      xhr.open("POST", targetUrl, true)
-      xhr.onreadystatechange = (e) =>
-        if xhr.readyState == 4
-          info = new InfoClass(xhr)
-          @triggerEvent("complete", info)
+      xhr.open("POST", @url, true)
+      xhr.onreadystatechange = @stateChanged
+      xhr.send(@data)
 
-      xhr.send(formData)
+    stateChanged: (e) =>
+      xhr = e.target
+
+      if xhr.readyState == 4
+        @triggerEvent("complete", e)

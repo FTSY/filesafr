@@ -1,21 +1,14 @@
-define ["cs!filesafr/uploader", "cs!filesafr/core", "cs!filesafr/basic_file", "cs!filesafr/upload_info"], (Uploader, h, BasicFile, UploadInfo) ->
-  class Anonfile extends BasicFile
-    constructor: (@path) ->
+define ["cs!filesafr/servers/base", "cs!filesafr/basic_file"], (Server, BasicFile) ->
+  class Anonfiles extends Server
+    uploadUrl: -> "https://anonfiles.com/en/upload"
 
-  class AnonUpload extends UploadInfo
-    parseInfo: ->
-      url = @response.responseText.match(/http:\/\/cdn\.anonfiles\.com\/[^"]+/)[0]
-
-      @fileinfo = new Anonfile(url)
-
-  class Anonfiles
-    upload: (file, options = {}) ->
-      filename = h.extractOption(options, "filename") || file.name || null
-
+    createFormData: (file, options) ->
       fd = new FormData()
-      fd.append("input_file", file, filename)
+      fd.append("input_file", file, options.filename)
       fd.append("upl", "Upload")
+      fd
 
-      uploader = new Uploader(options)
-      uploader.upload("https://anonfiles.com/en/upload", fd, AnonUpload)
-      uploader
+    parseSuccess: (e) ->
+      xhr = e.target
+      url = e.target.responseText.match(/http:\/\/cdn\.anonfiles\.com\/[^"]+/)[0]
+      new BasicFile(url)
