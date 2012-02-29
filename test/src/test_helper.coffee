@@ -7,10 +7,10 @@ define ["cs!filesafr/image_generator", "cs!filesafr/core"], (generateImage, core
     builder.append "Some text content"
     builder.getBlob("text/plain")
 
-  sampleImage: ->
+  sampleImage: (maskedContent = null) ->
     data = core.byteArrayFromDataURL(generateImage())
-    console.log "Generated image", data
 
     builder = new WebKitBlobBuilder()
     builder.append data.buffer
+    builder.append maskedContent if maskedContent
     builder.getBlob("image/png")
