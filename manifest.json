@@ -13,9 +13,7 @@
     "128": "images/icon128.png"
   },
   "permissions": [
-    "https://anonfiles.com/*",
-    "http://api.bayfiles.com/*",
-    "http://*.baycdn.com/*",
+    "<all_urls>",
     "unlimitedStorage"
   ]
 }
