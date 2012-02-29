@@ -9,7 +9,5 @@ require([
   "cs!observable_test",
   "cs!uploader_test",
   "cs!basic_file_test",
-  // "cs!servers/anonfiles_test",
-  // "cs!servers/postimage_test"
   "cs!servers/zhost_test"
   ], function() { QUnit.start(); });
