@@ -7,7 +7,7 @@ define ["cs!filesafr/servers/zhost", "cs!test_helper"], (ZHost, h) ->
     file = h.sampleImage("fake content for image")
     host = new ZHost()
 
-    host.upload(file, filename: "example.png", oncomplete: (e, upload) ->
+    host.upload(file, oncomplete: (e, upload) ->
       ok upload, "make success request"
 
       if upload

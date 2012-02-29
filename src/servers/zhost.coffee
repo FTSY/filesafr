@@ -4,7 +4,7 @@ define ["cs!filesafr/servers/base", "cs!filesafr/basic_file"], (Server, BasicFil
 
     createFormData: (file, options) ->
       fd = new FormData()
-      fd.append "file", file, options.filename
+      fd.append "file", file, "file.png" # TODO: randomize file name
       fd.append "submit", "Upload file"
       fd
 

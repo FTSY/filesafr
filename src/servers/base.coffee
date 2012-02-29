@@ -19,7 +19,6 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
 
     parseUploadOptions: (options) ->
       opts = {}
-      opts.filename = c.extractOption(options, "filename")
       opts.progress = (e) => options.onprogress(e, @parseProgress(e)) if options.onprogress?
       opts.complete = (e) => options.oncomplete(e, @parseComplete(e)) if options.oncomplete?
 
