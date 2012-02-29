@@ -1,6 +1,6 @@
 define ->
-  CANVAS_WIDTH  = 20
-  CANVAS_HEIGHT = 20
+  CANVAS_WIDTH  = 10
+  CANVAS_HEIGHT = 10
 
   getGeneratorCanvas = ->
     canvas = document.getElementById("_imageGeneratorCanvas")
