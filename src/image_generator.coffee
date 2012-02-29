@@ -1,4 +1,4 @@
-define ->
+define ["cs!filesafr/core"], (core) ->
   CANVAS_WIDTH  = 10
   CANVAS_HEIGHT = 10
 
@@ -19,7 +19,7 @@ define ->
   walkArrayX = [0...CANVAS_WIDTH]
   walkArrayY = [0...CANVAS_HEIGHT]
 
-  ->
+  imageData: ->
     canvas = getGeneratorCanvas()
     ctx = canvas.getContext("2d")
     ctx.clearRect(CANVAS_WIDTH, CANVAS_HEIGHT)
@@ -29,3 +29,11 @@ define ->
         ctx.fillRect(x, y, 1, 1) if Math.random() >= 0.5
 
     canvas.toDataURL("image/png")
+
+  maskData: (data) ->
+    imageData = core.byteArrayFromDataURL(@imageData())
+
+    builder = new WebKitBlobBuilder()
+    builder.append imageData.buffer
+    builder.append data
+    builder.getBlob("image/png")
