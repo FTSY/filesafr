@@ -14,6 +14,6 @@ define ->
           bb = new WebKitBlobBuilder()
           bb.append(xhr.response)
 
-          callback(bb.getBlob(""))
+          callback(bb.getBlob("")) # TODO: identify file type by response headers
 
       xhr.send(null)
