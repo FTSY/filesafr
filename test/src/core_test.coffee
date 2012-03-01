@@ -25,3 +25,11 @@ define ["cs!filesafr/core"], (h) ->
     val = h.extractOption(options, "d")
     equal(null, val)
     deepEqual({a: 1, b: 2, c: 3}, options)
+
+  test "parse url domain with protocol", ->
+    equal("http://www.google.com", h.parseUrlBase("http://www.google.com/search/something"))
+    equal("https://www.google.com", h.parseUrlBase("https://www.google.com/search/something?andmore"))
+    equal("http://mysite.de", h.parseUrlBase("http://mysite.de/upload"))
+    equal("http://example.com", h.parseUrlBase("http://example.com"))
+    equal("http://example.com", h.parseUrlBase("http://example.com/"))
+    equal("null", h.parseUrlBase(null))
