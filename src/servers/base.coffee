@@ -10,8 +10,8 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
 
       @createUploader(@createFormData(file, opts), opts)
 
-    createUploader: (fd, opt) ->
-      uploader = new Uploader(@uploadUrl(), fd)
+    createUploader: (fd, opt, customData) ->
+      uploader = new Uploader(@uploadUrl(), fd, customData)
       uploader.addListener "progress", opt.progress if opt.progress?
       uploader.addListener "complete", opt.complete if opt.complete?
       uploader.send()
