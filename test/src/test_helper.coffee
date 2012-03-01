@@ -46,7 +46,7 @@ define ["cs!filesafr/image_generator", "cs!filesafr/core"], (imageGenerator, cor
         buffer1 = new Uint8Array(e1.target.result)
         buffer2 = new Uint8Array(e2.target.result)
 
-        console.log buffer1, buffer2
+        # console.log buffer1, buffer2
 
         if buffer1.length != buffer2.length
           callback(false)
