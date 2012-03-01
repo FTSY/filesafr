@@ -2,6 +2,7 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
   class BaseServer
     name: -> "Unnamed Host"
     uploadUrl: -> null
+    headers: ->
 
     createFormData: (file, options) ->
       new FormData()
@@ -11,7 +12,7 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
       @createUploader(@createFormData(file, opts), opts)
 
     createUploader: (fd, opt, customData) ->
-      uploader = new Uploader(@uploadUrl(), fd, customData)
+      uploader = new Uploader(@uploadUrl(), fd, customData, @headers())
       uploader.addListener "progress", opt.progress if opt.progress?
       uploader.addListener "complete", opt.complete if opt.complete?
       uploader.send()
