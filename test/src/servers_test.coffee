@@ -1,4 +1,5 @@
 define ["cs!filesafr/servers_list", "cs!test_helper"], (servers, h) ->
+  return unless location.href.match /\?.*servers=true.*$/
   module "Servers"
 
   for server in servers
