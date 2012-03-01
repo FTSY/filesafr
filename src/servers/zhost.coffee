@@ -1,5 +1,6 @@
 define ["cs!filesafr/servers/image_based"], (Server) ->
   class ZHost extends Server
+    name: -> "ZHost"
     uploadUrl: -> "http://zhost.tk/"
 
     createFormData: (file, options) ->
@@ -15,5 +16,5 @@ define ["cs!filesafr/servers/image_based"], (Server) ->
       if match
         new Server.ImageFile(match[1], e.customData.originalSize)
       else
-        console.log("can't match url on result", e)
+        console.error("can't match url on result", e)
         null

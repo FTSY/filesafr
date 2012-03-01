@@ -9,5 +9,5 @@ require([
   "cs!observable_test",
   "cs!uploader_test",
   "cs!basic_file_test",
-  "cs!servers/zhost_test"
+  "cs!servers_test"
   ], function() { QUnit.start(); });

@@ -1,5 +1,6 @@
-define ["cs!filesafr/servers/image_based"], (Server, BasicFile) ->
+define ["cs!filesafr/servers/image_based"], (Server) ->
   class Postimage extends Server
+    name: -> "Postimage"
     uploadUrl: -> "http://postimage.org/"
 
     createFormData: (file, options) ->
@@ -26,8 +27,7 @@ define ["cs!filesafr/servers/image_based"], (Server, BasicFile) ->
       match = xhr.responseText.match(/id="code_2".+?>.+?\[img\](.+?)\[\/img\]/)
 
       if match
-        console.log("got result url", match[1])
         new Server.ImageFile(match[1], e.customData.originalSize)
       else
-        console.log("can't match url on result", e)
+        console.error("can't match url on result", e)
         null

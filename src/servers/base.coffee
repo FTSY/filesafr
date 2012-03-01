@@ -1,5 +1,6 @@
 define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
   class BaseServer
+    name: -> "Unnamed Host"
     uploadUrl: -> null
 
     createFormData: (file, options) ->
