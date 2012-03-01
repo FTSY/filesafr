@@ -22,6 +22,7 @@ define ["cs!filesafr/servers/image_based"], (Server) ->
   class ZHost extends Server
     name: -> "ZHost"
     uploadUrl: -> "http://zhost.tk/"
+    maxSize: -> 8 * 1024 * 1024
 
     createFormData: (file, options) ->
       fd = new FormData()
