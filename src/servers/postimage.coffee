@@ -22,12 +22,4 @@ define ["cs!filesafr/servers/image_based"], (Server) ->
       fd.append "submit", "Upload It!"
       fd
 
-    parseSuccess: (e) ->
-      xhr = e.target
-      match = xhr.responseText.match(/id="code_2".+?>.+?\[img\](.+?)\[\/img\]/)
-
-      if match
-        new Server.ImageFile(match[1], e.customData.originalSize)
-      else
-        console.error("can't match url on result", e)
-        null
+    matchResponseOnText: (text) -> text.match(/id="code_2".+?>.+?\[img\](.+?)\[\/img\]/)

@@ -21,4 +21,16 @@ define ["cs!filesafr/servers/base", "cs!filesafr/basic_file", "cs!filesafr/image
 
       uploader = @createUploader(@createFormData(maskedFile, opts), opts, fileInfo)
 
-    imageName: -> "file.png"
+    imageName: -> "file.png" # TODO: make it random
+
+    parseSuccess: (e) ->
+      xhr = e.target
+      match = @matchResponseOnText(xhr.responseText)
+
+      if match
+        new ImageMaskedFile(match[1], e.customData.originalSize)
+      else
+        console.error("can't match url on result", e)
+        null
+
+    matchResponseOnText: ->
