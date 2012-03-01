@@ -3,8 +3,17 @@ window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileS
 define ["cs!filesafr/image_generator", "cs!filesafr/core"], (imageGenerator, core) ->
   testReURL: /^[a-z]+:\/\/.+$/
   sampleBlob: ->
+    SIZE = 1024
+    buffer = new ArrayBuffer(SIZE)
+    i = 0
+
+    uarray = new Uint8Array(buffer)
+    while i < SIZE
+      uarray[i] = Math.round(Math.random() * 255)
+      i += 1
+
     builder = new WebKitBlobBuilder()
-    builder.append "Some text content"
+    builder.append uarray.buffer
     builder.getBlob("text/plain")
 
   sampleImage: (maskedContent = null) -> imageGenerator.maskData(maskedContent)
@@ -16,6 +25,8 @@ define ["cs!filesafr/image_generator", "cs!filesafr/core"], (imageGenerator, cor
       reader2.onload = (e2) ->
         buffer1 = new Uint8Array(e1.target.result)
         buffer2 = new Uint8Array(e2.target.result)
+
+        console.log buffer1, buffer2
 
         if buffer1.length != buffer2.length
           callback(false)

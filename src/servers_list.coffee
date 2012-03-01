@@ -4,4 +4,5 @@ define [
   "cs!filesafr/servers/imageshack"
   "cs!filesafr/servers/mojoimage"
   "cs!filesafr/servers/4freeimages"
+  "cs!filesafr/servers/freeimagehosting"
   ], -> Array::slice.call(arguments, 0)
