@@ -4,7 +4,7 @@ define ["cs!filesafr/servers/zhost", "cs!test_helper"], (ZHost, h) ->
   test "uploading a file", ->
     QUnit.stop()
 
-    file = h.sampleImage("fake content for image")
+    file = h.sampleBlob()
     host = new ZHost()
 
     host.upload(file, oncomplete: (e, upload) ->
