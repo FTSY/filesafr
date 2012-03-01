@@ -4,7 +4,10 @@ define ["cs!filesafr/servers/base", "cs!filesafr/basic_file", "cs!filesafr/image
 
     download: (callback) ->
       @fetchBlob (file) =>
-        callback(file.webkitSlice(file.size - @skipSize))
+        if file
+          callback(file.webkitSlice(file.size - @skipSize))
+        else
+          callback(null)
 
   class ImageBasedServer extends Server
     @ImageFile: ImageMaskedFile

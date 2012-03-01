@@ -9,11 +9,15 @@ define ->
       xhr.open("GET", @url, true)
       xhr.responseType = "arraybuffer"
 
-      xhr.onload = (e) ->
-        if xhr.status >= 200 and xhr.status < 300
-          bb = new WebKitBlobBuilder()
-          bb.append(xhr.response)
+      xhr.onreadystatechange = (e) ->
+        if xhr.readyState == 4
+          if xhr.status >= 200 and xhr.status < 300
+            bb = new WebKitBlobBuilder()
+            bb.append(xhr.response)
 
-          callback(bb.getBlob("")) # TODO: identify file type by response headers
+            callback(bb.getBlob("")) # TODO: identify file type by response headers
+          else
+            console.log "invalid response on download"
+            callback(null)
 
       xhr.send(null)
