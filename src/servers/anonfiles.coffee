@@ -18,17 +18,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-define ["cs!filesafr/servers/base", "cs!filesafr/basic_file"], (Server, BasicFile) ->
+define ["cs!filesafr/servers/image_based", "cs!filesafr/basic_file"], (Server, BasicFile) ->
   class Anonfiles extends Server
-    uploadUrl: -> "https://anonfiles.com/en/upload"
+    name: -> "Anonfiles"
+    uploadUrl: -> "https://anonfiles.com/api"
+    maxSize: -> 500 * 1024 * 1024
 
     createFormData: (file, options) ->
       fd = new FormData()
-      fd.append("input_file", file, options.filename)
-      fd.append("upl", "Upload")
+      fd.append "file", file, @imageName()
       fd
 
     parseSuccess: (e) ->
-      xhr = e.target
-      url = e.target.responseText.match(/http:\/\/cdn\.anonfiles\.com\/[^"]+/)[0]
-      new BasicFile(url)
+      try
+        result = JSON.parse(e.target.responseText)
+
+        if result.status == "success"
+          new Server.ImageFile(result.url, e.customData.originalSize)
+        else
+          console.error "Error uploading:", result.msg
+          null
+      catch e
+        console.error "Malformed response:", e
+        null

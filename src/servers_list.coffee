@@ -19,6 +19,7 @@
 # THE SOFTWARE.
 
 define [
+  "cs!filesafr/servers/anonfiles"
   "cs!filesafr/servers/zhost"
   "cs!filesafr/servers/postimage"
   "cs!filesafr/servers/imageshack"
