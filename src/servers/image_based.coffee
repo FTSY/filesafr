@@ -20,3 +20,5 @@ define ["cs!filesafr/servers/base", "cs!filesafr/basic_file", "cs!filesafr/image
       maskedFile = generator.maskData(file)
 
       uploader = @createUploader(@createFormData(maskedFile, opts), opts, fileInfo)
+
+    imageName: -> "file.png"
