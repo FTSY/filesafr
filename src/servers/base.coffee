@@ -7,7 +7,6 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
 
     upload: (file, options = {}) ->
       opts = @parseUploadOptions(options)
-
       @createUploader(@createFormData(file, opts), opts)
 
     createUploader: (fd, opt, customData) ->
@@ -18,9 +17,9 @@ define ["cs!filesafr/uploader", "cs!filesafr/core"], (Uploader, c) ->
       uploader
 
     parseUploadOptions: (options) ->
-      opts = {}
-      opts.progress = (e) => options.onprogress(e, @parseProgress(e)) if options.onprogress?
-      opts.complete = (e) => options.oncomplete(e, @parseComplete(e)) if options.oncomplete?
+      opts = c.mix({}, options)
+      opts.progress = ((e) => options.onprogress(e, @parseProgress(e))) if options.onprogress?
+      opts.complete = ((e) => options.oncomplete(e, @parseComplete(e))) if options.oncomplete?
 
       opts
 
