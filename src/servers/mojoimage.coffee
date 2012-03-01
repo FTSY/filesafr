@@ -11,3 +11,9 @@ define ["cs!filesafr/servers/image_based"], (Server) ->
       fd
 
     matchResponseOnText: (text) -> text.match /\[IMG\](.+?)\[\/IMG\]/
+
+    upload: (file, options = {}) ->
+      xhr = new XMLHttpRequest()
+      xhr.open("GET", "http://mojoimage.com", true)
+      xhr.onload = => Server::upload.call(this, file, options)
+      xhr.send()
