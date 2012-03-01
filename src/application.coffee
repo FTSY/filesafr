@@ -1,9 +1,9 @@
-define ["ember", "cs!filesafr/core", "cs!filesafr/ui/progress_bar", "cs!filesafr/image_generator"], (E, core, ProgressBar, generateImage) ->
+define ["ember", "cs!filesafr/core", "cs!filesafr/ui/progress_bar", "cs!filesafr/image_generator"], (E, core, ProgressBar, generator) ->
   ->
     app = E.Application.create()
     app.set("progressValue", 0)
 
-    imgData = generateImage()
+    imgData = generator.imageData()
 
     img = document.createElement("img")
     img.src = imgData
