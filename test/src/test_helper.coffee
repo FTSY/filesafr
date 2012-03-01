@@ -34,7 +34,7 @@ define ["cs!filesafr/image_generator", "cs!filesafr/core"], (imageGenerator, cor
 
     builder = new WebKitBlobBuilder()
     builder.append uarray.buffer
-    builder.getBlob("text/plain")
+    builder.getBlob("application/binary")
 
   sampleImage: (maskedContent = null) -> imageGenerator.maskData(maskedContent)
 
