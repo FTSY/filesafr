@@ -25,12 +25,10 @@ define ["cs!filesafr/image_generator", "cs!filesafr/core"], (imageGenerator, cor
   sampleBlob: ->
     SIZE = 1024
     buffer = new ArrayBuffer(SIZE)
-    i = 0
-
     uarray = new Uint8Array(buffer)
-    while i < SIZE
+
+    for i in [0...SIZE]
       uarray[i] = Math.round(Math.random() * 255)
-      i += 1
 
     builder = new WebKitBlobBuilder()
     builder.append uarray.buffer
